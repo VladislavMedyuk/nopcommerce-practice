@@ -89,3 +89,43 @@ class ProductPage(BasePage):
 
         for select_locator in select_list:
             select_random_option_in_list(select_locator)
+
+    def action_for_pc(self) -> None:
+        self.click_add_to_cart_without_action()
+        self.browser.refresh()
+        self.select_random_option(ProductPageLocators.SELECT_LIST)
+        self.click_radio_buttons()
+        self.click_checkboxes()
+        self.add_to_cart()
+        self.should_be_success_message()
+        self.success_message_is_disappeared()
+
+    def action_for_macbook(self) -> None:
+        self.add_to_cart()
+        self.should_be_success_message()
+        self.success_message_is_disappeared()
+
+    def action_for_phone(self) -> None:
+        self.add_to_cart()
+        self.should_be_success_message()
+        self.success_message_is_disappeared()
+
+    def action_for_gift(self) -> None:
+        self.click_add_to_cart_without_action()
+        self.browser.refresh()
+        self.fill_gift_form_and_add_to_cart()
+        self.should_be_success_message()
+        self.success_message_is_disappeared()
+
+    def perform_actions_based_on_product(self) -> None:
+        product_name = self.get_product_name()
+        if product_name == Resources.PC_PAGE_NAME:
+            self.action_for_pc()
+        elif product_name == Resources.MACBOOK_PAGE_NAME:
+            self.action_for_macbook()
+        elif product_name == Resources.GIFT_PAGE_NAME:
+            self.action_for_gift()
+        elif product_name == Resources.PHONE_PAGE_NAME:
+            self.action_for_phone()
+        else:
+            print(f"Unknown product: {product_name}")
