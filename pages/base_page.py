@@ -1,3 +1,4 @@
+import allure
 from faker import Faker
 from selenium import webdriver
 from selenium.common import NoSuchElementException, TimeoutException
@@ -29,16 +30,20 @@ class BasePage:
     def url(self, url: str) -> None:
         self.__url = url
 
+    @allure.step("Открываем страницу")
     def open(self) -> None:
         self.browser.get(self.url)
 
+    @allure.step("Находим элемент по локатору")
     def find_element(self, locator: tuple) -> WebElement:
         return WebDriverWait(self.browser, Resources.TIMEOUT).until(EC.visibility_of_element_located(locator))
 
+    @allure.step("Вводим текст в элемент")
     def send_keys(self, locator: tuple, text: str) -> None:
         element = self.find_element(locator)
         element.send_keys(text)
 
+    @allure.step("Находим все элементы по локатору")
     def find_elements(self, locator: tuple) -> list:
         try:
             elements = WebDriverWait(self.browser, Resources.TIMEOUT).until(
@@ -48,10 +53,12 @@ class BasePage:
         except NoSuchElementException:
             return []
 
+    @allure.step("Проверяем, что элементы присутствуют на странице")
     def elements_are_present(self, locator: tuple) -> bool:
         elements = self.find_elements(locator)
         return len(elements) > 0
 
+    @allure.step("Проверяем, что элемент присутствует на странице")
     def element_is_present(self, locator: tuple) -> bool:
         try:
             return WebDriverWait(self.browser, Resources.TIMEOUT).until(
@@ -60,6 +67,7 @@ class BasePage:
         except NoSuchElementException:
             return False
 
+    @allure.step("Проверяем, что элемент отсутствует на странице")
     def element_is_not_present(self, locator: tuple) -> bool:
         try:
             WebDriverWait(self.browser, Resources.TIMEOUT).until(
