@@ -16,9 +16,16 @@ class MainPage(BasePage):
 
     @allure.step("Проверяем, что отображается название продукта")
     def should_be_product_name(self) -> None:
-        assert self.element_is_present(MainPageLocators.PRODUCT_NAME)
+        assert self.element_is_present(MainPageLocators.PRODUCT_NAME), "Product name is not present"
 
     @allure.step("Переходим на страницу продукта")
     def go_to_product_page(self) -> None:
         product_name = self.find_element(MainPageLocators.PRODUCT_NAME)
         product_name.click()
+
+    def should_be_register_link(self) -> None:
+        assert self.element_is_present(MainPageLocators.REGISTER_LINK), "Register link is not present"
+
+    def go_to_register_page(self):
+        register_link = self.find_element(MainPageLocators.REGISTER_LINK)
+        register_link.click()
