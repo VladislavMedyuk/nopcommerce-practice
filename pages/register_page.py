@@ -35,3 +35,10 @@ class RegisterPage(BasePage):
     def should_be_success_registration(self):
         assert self.element_is_present(
             RegisterPageLocators.SUCCESS_REGISTRATION), "There should be a message about successful registration, but this does not happen "
+
+    def should_be_login_link(self):
+        assert self.element_is_present(RegisterPageLocators.LOGIN_LINK)
+
+    def go_to_login_page(self):
+        login_page = self.find_element(RegisterPageLocators.LOGIN_LINK)
+        login_page.click()
