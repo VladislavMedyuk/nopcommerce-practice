@@ -35,3 +35,15 @@ class ProductPageLocators:
     RADIO_BUTTONS = (By.XPATH, "//input[@type='radio']")
     CHECKBOXES = (By.XPATH, "//ul[@class='option-list']//input[@type='checkbox']")
     SELECT_LIST = [(By.XPATH, "//*[@id='product_attribute_1']"), (By.XPATH, "//*[@id='product_attribute_2']")]
+
+
+class RegisterPageLocators:
+    REGISTER_BUTTON = (By.ID, "register-button")
+    GENDER = (By.CSS_SELECTOR, f"#gender span:nth-of-type({random.randint(1, 2)}) input")
+    FIRST_NAME = (By.CSS_SELECTOR, "#FirstName")
+    LAST_NAME = (By.CSS_SELECTOR, "#LastName")
+    EMAIL = (By.CSS_SELECTOR, "#Email")
+    COMPANY = (By.CSS_SELECTOR, "#Company")
+    NEWSLETTER = (By.CSS_SELECTOR, ".inputs #Newsletter")
+    PASSWORD = (By.CSS_SELECTOR, "[type = 'Password']")
+    SUCCESS_REGISTRATION = (By.CSS_SELECTOR, ".page-body .result")
