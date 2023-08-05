@@ -31,3 +31,7 @@ class RegisterPage(BasePage):
             parole.send_keys(password)
         register_button = self.find_element(RegisterPageLocators.REGISTER_BUTTON)
         register_button.click()
+
+    def should_be_success_registration(self):
+        assert self.element_is_present(
+            RegisterPageLocators.SUCCESS_REGISTRATION), "There should be a message about successful registration, but this does not happen "
