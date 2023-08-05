@@ -48,3 +48,4 @@ class RegisterPageLocators:
     NEWSLETTER = (By.CSS_SELECTOR, ".inputs #Newsletter")
     PASSWORD = (By.CSS_SELECTOR, "[type = 'Password']")
     SUCCESS_REGISTRATION = (By.CSS_SELECTOR, ".page-body .result")
+    LOGIN_LINK = (By.CLASS_NAME, "ico-login")
