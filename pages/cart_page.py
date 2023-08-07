@@ -24,3 +24,12 @@ class CartPage(BasePage):
     @allure.step("Проверяем, что отображается общая стоимость")
     def should_be_total_price(self) -> None:
         assert self.element_is_present(CartPageLocators.TOTAL_CASH), "There is not total price on the page"
+
+    def delete_product_from_cart(self) -> None:
+        delete_button = self.find_element(CartPageLocators.DELETE_BUTTON)
+        delete_button.click()
+
+    def counter_should_be_equal_to_zero(self):
+        counter = self.find_element(CartPageLocators.COUNTER)
+        assert counter.text.strip(
+            "()") == str(0), "Counter isn't equal to 0, then cart isn't empty"
