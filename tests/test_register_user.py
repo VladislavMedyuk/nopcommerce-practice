@@ -1,3 +1,5 @@
+import allure
+
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.register_page import RegisterPage
@@ -5,6 +7,7 @@ from resources.env import Resources
 
 
 class TestRegisterNewUser:
+    @allure.step("Тест: Регистрация пользователя")
     def test_register_new_user(self, browser):
         main_page = MainPage(browser, Resources.MAIN_LINK)
         main_page.open()
@@ -16,6 +19,7 @@ class TestRegisterNewUser:
         register_page.register_new_user(email, first_name, last_name, company, password)
         register_page.should_be_success_registration()
 
+    @allure.step("Тест: Регистрация и Вход в аккаунт")
     def test_register_and_login_new_user(self, browser):
         main_page = MainPage(browser, Resources.MAIN_LINK)
         main_page.open()

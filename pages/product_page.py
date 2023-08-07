@@ -14,6 +14,7 @@ from resources.env import Resources
 
 class ProductPage(BasePage):
     @staticmethod
+    @allure.step("Генерируем случайные данные для заполнения формы")
     def generate_random_data() -> dict:
         fake = Faker()
         data = {"RecipientName": fake.name(),

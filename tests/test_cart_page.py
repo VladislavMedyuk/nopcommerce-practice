@@ -11,6 +11,7 @@ from resources.env import Resources
 
 class TestCartPage:
     @pytest.fixture(scope="session", autouse=True)
+    @allure.step("Регистрация и вход пользователя в аккаунт перед выполнением тестов")
     def setup(self, browser):
         register_page = RegisterPage(browser, Resources.REGISTER_LINK)
         register_page.open()
@@ -41,6 +42,7 @@ class TestCartPage:
         cart_page.should_be_total_price()
         cart_page.counter_should_be_equal_to_quantity()
 
+    @allure.step("Тест: Проверка стоимости и общей суммы заказа")
     def test_checking_the_cost_and_total_sum_of_the_order(self, browser):
         cart_page = CartPage(browser, Resources.CART_LINK)
         cart_page.open()
@@ -48,6 +50,7 @@ class TestCartPage:
         cart_page.should_be_total_price()
         cart_page.product_price_should_be_equal_to_total_price()
 
+    @allure.step("Тест: Удаление товара из корзины")
     def test_user_can_delete_product_from_cart(self, browser):
         cart_page = CartPage(browser, Resources.CART_LINK)
         cart_page.open()
