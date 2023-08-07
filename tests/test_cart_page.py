@@ -41,6 +41,13 @@ class TestCartPage:
         cart_page.should_be_total_price()
         cart_page.counter_should_be_equal_to_quantity()
 
+    def test_checking_the_cost_and_total_sum_of_the_order(self, browser):
+        cart_page = CartPage(browser, Resources.CART_LINK)
+        cart_page.open()
+        cart_page.should_be_product_price()
+        cart_page.should_be_total_price()
+        cart_page.product_price_should_be_equal_to_total_price()
+
     def test_user_can_delete_product_from_cart(self, browser):
         cart_page = CartPage(browser, Resources.CART_LINK)
         cart_page.open()
