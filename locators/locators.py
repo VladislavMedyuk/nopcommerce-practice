@@ -11,6 +11,7 @@ class CartPageLocators:
     QUANTITY = (By.XPATH, "//*[@class='qty-input']")
     COUNTER = (By.CSS_SELECTOR, "span.cart-qty")
     DELETE_BUTTON = (By.CLASS_NAME, "remove-btn")
+    PRICE = (By.CLASS_NAME, "product-unit-price")
 
 
 class MainPageLocators:
