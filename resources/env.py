@@ -2,6 +2,7 @@ class Resources:
     TIMEOUT = 20
     MAIN_LINK = "https://demo.nopcommerce.com/"
     REGISTER_LINK = "https://demo.nopcommerce.com/register?returnUrl=%2F"
+    CART_LINK = "https://demo.nopcommerce.com/cart"
 
     PC_PAGE_NAME = "Build your own computer"
     MACBOOK_PAGE_NAME = "Apple MacBook Pro 13-inch"
