@@ -26,6 +26,9 @@ class MainPage(BasePage):
     def should_be_register_link(self) -> None:
         assert self.element_is_present(MainPageLocators.REGISTER_LINK), "Register link is not present"
 
-    def go_to_register_page(self):
+    def go_to_register_page(self) -> None:
         register_link = self.find_element(MainPageLocators.REGISTER_LINK)
         register_link.click()
+
+    def should_be_authorized_user(self):
+        assert self.element_is_present(MainPageLocators.MY_ACCOUNT_LINK), "User is not authorized, but he should be"
