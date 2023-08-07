@@ -86,7 +86,7 @@ class ProductPage(BasePage):
                 radio.click()
 
     @allure.step("Кликаем на случайные чекбоксы")
-    def click_checkboxes(self):
+    def click_checkboxes(self) -> None:
         checkboxes = self.find_elements(ProductPageLocators.CHECKBOXES)
         for check in checkboxes:
             rand_click = random.choice([True, False])
@@ -94,7 +94,7 @@ class ProductPage(BasePage):
                 check.click()
 
     @allure.step("Выбираем случайные значения в выпадающих списках")
-    def select_random_option(self, select_list):
+    def select_random_option(self, select_list) -> None:
         def select_random_option_in_list(locator):
             selects = self.find_elements(locator)
             for select in selects:

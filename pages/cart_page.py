@@ -29,7 +29,7 @@ class CartPage(BasePage):
         delete_button = self.find_element(CartPageLocators.DELETE_BUTTON)
         delete_button.click()
 
-    def counter_should_be_equal_to_zero(self):
+    def counter_should_be_equal_to_zero(self) -> None:
         counter = self.find_element(CartPageLocators.COUNTER)
         assert counter.text.strip(
             "()") == str(0), "Counter isn't equal to 0, then cart isn't empty"
