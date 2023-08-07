@@ -1,6 +1,7 @@
 import random
 
 import allure
+from faker import Faker
 from selenium.common import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
@@ -12,6 +13,13 @@ from resources.env import Resources
 
 
 class ProductPage(BasePage):
+    @staticmethod
+    def generate_random_data() -> dict:
+        fake = Faker()
+        data = {"RecipientName": fake.name(),
+                "RecipientEmail": fake.email()}
+        return data
+
     @allure.step("Добавляем продукт в корзину")
     def add_to_cart(self) -> None:
         add_button = self.find_element(ProductPageLocators.ADD_TO_CART_BUTTON)
@@ -64,8 +72,6 @@ class ProductPage(BasePage):
 
         self.send_keys(ProductPageLocators.RECIPIENT_NAME_FIELD, data["RecipientName"])
         self.send_keys(ProductPageLocators.RECIPIENT_EMAIL_FIELD, data["RecipientEmail"])
-        self.send_keys(ProductPageLocators.SENDER_NAME_FIELD, data["SenderName"])
-        self.send_keys(ProductPageLocators.SENDER_EMAIL_FIELD, data["SenderEmail"])
 
         self.add_to_cart()
         assert self.element_is_not_present(
