@@ -16,8 +16,9 @@ class MainPageLocators:
     SHOPPING_CART = (By.CLASS_NAME, "cart-label")
     SEARCH_BAR = (By.NAME, "q")
     SUCCESS_MESSAGE = (By.XPATH, "//*[@id='bar-notification'] //p")
-    PRODUCT_NAME = (By.CSS_SELECTOR, f".item-box:nth-child({random.randint(1, 4)}) .details a")
+    PRODUCT_NAME = (By.CSS_SELECTOR, f".item-box:nth-child({random.randint(4, 4)}) .details a")
     REGISTER_LINK = (By.CLASS_NAME, "ico-register")
+    MY_ACCOUNT_LINK = (By.CLASS_NAME, "ico-account")
 
 
 class ProductPageLocators:
@@ -49,3 +50,10 @@ class RegisterPageLocators:
     PASSWORD = (By.CSS_SELECTOR, "[type = 'Password']")
     SUCCESS_REGISTRATION = (By.CSS_SELECTOR, ".page-body .result")
     LOGIN_LINK = (By.CLASS_NAME, "ico-login")
+
+
+class LoginPageLocators:
+    LOGIN_FORM = (By.CLASS_NAME, "returning-wrapper")
+    EMAIL_BAR = (By.CSS_SELECTOR, ".email")
+    PASSWORD_BAR = (By.CSS_SELECTOR, ".password")
+    LOGIN_BUTTON = (By.CLASS_NAME, "login-button")
