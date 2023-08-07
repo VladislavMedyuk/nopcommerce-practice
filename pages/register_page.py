@@ -15,7 +15,7 @@ class RegisterPage(BasePage):
         company = faker.company()
         return email, first_name, last_name, company, password
 
-    def register_new_user(self, email, first_name, last_name, company, password):
+    def register_new_user(self, email, first_name, last_name, company, password) -> None:
         gender = self.find_element(RegisterPageLocators.GENDER)
         gender.click()
         first_name_bar = self.find_element(RegisterPageLocators.FIRST_NAME)
@@ -32,13 +32,13 @@ class RegisterPage(BasePage):
         register_button = self.find_element(RegisterPageLocators.REGISTER_BUTTON)
         register_button.click()
 
-    def should_be_success_registration(self):
+    def should_be_success_registration(self) -> None:
         assert self.element_is_present(
             RegisterPageLocators.SUCCESS_REGISTRATION), "There should be a message about successful registration, but this does not happen "
 
-    def should_be_login_link(self):
+    def should_be_login_link(self) -> None:
         assert self.element_is_present(RegisterPageLocators.LOGIN_LINK)
 
-    def go_to_login_page(self):
+    def go_to_login_page(self) -> None:
         login_page = self.find_element(RegisterPageLocators.LOGIN_LINK)
         login_page.click()

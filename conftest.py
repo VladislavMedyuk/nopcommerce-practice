@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture()
 def browser():
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])

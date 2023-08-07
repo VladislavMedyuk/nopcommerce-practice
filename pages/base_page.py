@@ -1,5 +1,4 @@
 import allure
-from faker import Faker
 from selenium import webdriver
 from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.remote.webelement import WebElement
@@ -76,12 +75,3 @@ class BasePage:
         except TimeoutException:
             return False
         return True
-
-    @staticmethod
-    def generate_random_data() -> dict:
-        fake = Faker()
-        data = {"RecipientName": fake.name(),
-                "RecipientEmail": fake.email(),
-                "SenderName": fake.name(),
-                "SenderEmail": fake.email()}
-        return data
