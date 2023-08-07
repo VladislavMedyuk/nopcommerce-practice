@@ -10,7 +10,7 @@ from resources.env import Resources
 
 
 class TestCartPage:
-    @pytest.fixture(scope="function", autouse=True)
+    @pytest.fixture(scope="session", autouse=True)
     def setup(self, browser):
         register_page = RegisterPage(browser, Resources.REGISTER_LINK)
         register_page.open()
@@ -40,6 +40,14 @@ class TestCartPage:
         cart_page.cart_shouldnt_be_empty()
         cart_page.should_be_total_price()
         cart_page.counter_should_be_equal_to_quantity()
+
+    def test_user_can_delete_product_from_cart(self, browser):
+        cart_page = CartPage(browser, Resources.CART_LINK)
+        cart_page.open()
+        cart_page.cart_shouldnt_be_empty()
+        cart_page.delete_product_from_cart()
+        cart_page.cart_should_be_empty()
+        cart_page.counter_should_be_equal_to_zero()
 
 
 @allure.step("Тест: На главной странице должна быть кнопка добавить в корзину")
