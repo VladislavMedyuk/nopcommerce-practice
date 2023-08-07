@@ -10,6 +10,7 @@ class CartPageLocators:
     CART_ITEMS = (By.CSS_SELECTOR, ".table-wrapper tbody tr")
     QUANTITY = (By.XPATH, "//*[@class='qty-input']")
     COUNTER = (By.CSS_SELECTOR, "span.cart-qty")
+    DELETE_BUTTON = (By.CLASS_NAME, "remove-btn")
 
 
 class MainPageLocators:
