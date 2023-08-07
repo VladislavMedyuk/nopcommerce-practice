@@ -33,3 +33,13 @@ class CartPage(BasePage):
         counter = self.find_element(CartPageLocators.COUNTER)
         assert counter.text.strip(
             "()") == str(0), "Counter isn't equal to 0, then cart isn't empty"
+
+    def should_be_product_price(self):
+        assert self.element_is_present(CartPageLocators.PRICE), "There is not product price on this page"
+
+    def product_price_should_be_equal_to_total_price(self):
+        price = self.find_element(CartPageLocators.PRICE)
+        quantity = self.find_element(CartPageLocators.QUANTITY)
+        total_price = self.find_element(CartPageLocators.TOTAL_CASH)
+        assert float(price.text.strip("$")) * float(quantity.get_attribute("value")) == float(
+            total_price.text.strip("$")), "the total order amount is incorrectly calculated for all added items."
