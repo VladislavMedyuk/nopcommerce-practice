@@ -10,7 +10,7 @@ from resources.env import Resources
 
 
 class TestCartPage:
-    @pytest.fixture(scope="session", autouse=True)
+    @pytest.fixture(scope="class", autouse=True)
     @allure.step("Регистрация и вход пользователя в аккаунт перед выполнением тестов")
     def setup(self, browser):
         register_page = RegisterPage(browser, Resources.REGISTER_LINK)
