@@ -45,5 +45,6 @@ class CartPage(BasePage):
         price = self.find_element(CartPageLocators.PRICE)
         quantity = self.find_element(CartPageLocators.QUANTITY)
         total_price = self.find_element(CartPageLocators.TOTAL_CASH)
-        assert float(price.text.strip("$")) * float(quantity.get_attribute("value")) == float(
-            total_price.text.strip("$")), "the total order amount is incorrectly calculated for all added items."
+        assert float(price.text.strip("$").replace(",", "")) * float(quantity.get_attribute("value")) == float(
+            total_price.text.strip("$").replace(",",
+                                                "")), "the total order amount is incorrectly calculated for all added items."
