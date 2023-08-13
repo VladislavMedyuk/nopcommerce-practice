@@ -21,6 +21,7 @@ class MainPageLocators:
     PRODUCT_NAME = (By.CSS_SELECTOR, f".item-box:nth-child({random.randint(1, 4)}) .details a")
     REGISTER_LINK = (By.CLASS_NAME, "ico-register")
     MY_ACCOUNT_LINK = (By.CLASS_NAME, "ico-account")
+    SEARCH_BUTTON = (By.CSS_SELECTOR, ".search-box-button")
 
 
 class ProductPageLocators:
@@ -59,3 +60,11 @@ class LoginPageLocators:
     EMAIL_BAR = (By.CSS_SELECTOR, ".email")
     PASSWORD_BAR = (By.CSS_SELECTOR, ".password")
     LOGIN_BUTTON = (By.CLASS_NAME, "login-button")
+
+
+class SearchPageLocators:
+    PRODUCT_ITEMS = (By.CLASS_NAME, "product-item")
+    PRODUCT_TITLE = (By.CSS_SELECTOR, "img[title]")
+    PRODUCT_NAME = (By.CLASS_NAME, "product-title")
+    PRODUCT_PRICE = (By.CLASS_NAME, "actual-price")
+    PRODUCT_IMAGE = (By.CSS_SELECTOR, ".products-wrapper .picture")
