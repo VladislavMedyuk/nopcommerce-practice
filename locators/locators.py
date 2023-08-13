@@ -65,6 +65,7 @@ class LoginPageLocators:
 class SearchPageLocators:
     PRODUCT_ITEMS = (By.CLASS_NAME, "product-item")
     PRODUCT_TITLE = (By.CSS_SELECTOR, "img[title]")
-    PRODUCT_NAME = (By.CLASS_NAME, "product-title")
+    PRODUCT_NAME = (By.CSS_SELECTOR, ".product-title a")
     PRODUCT_PRICE = (By.CLASS_NAME, "actual-price")
     PRODUCT_IMAGE = (By.CSS_SELECTOR, ".products-wrapper .picture")
+    ERROR_MESSAGE = (By.CLASS_NAME, "no-result")
