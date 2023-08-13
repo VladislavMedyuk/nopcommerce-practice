@@ -12,3 +12,5 @@ class Resources:
     EXISTING_PRODUCT = "phone"
     NONEXISTENT_PRODUCT = "machine"
     EMPTY_REQUEST = ""
+
+    ALERT_TEXT = "Please enter some search keyword"
