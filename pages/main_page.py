@@ -1,7 +1,10 @@
 import allure
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.locators import MainPageLocators
 from pages.base_page import BasePage
+from resources.env import Resources
 
 
 class MainPage(BasePage):
@@ -45,3 +48,8 @@ class MainPage(BasePage):
 
         search_button = self.find_element(MainPageLocators.SEARCH_BUTTON)
         search_button.click()
+
+    def should_be_a_popup_alert(self):
+        alert = WebDriverWait(self.browser, Resources.TIMEOUT).until(EC.alert_is_present())
+        alert_text = alert.text
+        assert alert_text in Resources.ALERT_TEXT, "This is not the expected text in the response"
