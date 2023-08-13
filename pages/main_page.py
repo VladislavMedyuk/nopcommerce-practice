@@ -35,3 +35,13 @@ class MainPage(BasePage):
     @allure.step("Проверяем, что пользователь успешно зарегистрирован")
     def should_be_authorized_user(self) -> None:
         assert self.element_is_present(MainPageLocators.MY_ACCOUNT_LINK), "User is not authorized, but he should be"
+
+    def should_be_search_bar(self) -> None:
+        assert self.element_is_present(MainPageLocators.SEARCH_BAR), ""
+
+    def search_for_a_product(self, name) -> None:
+        search_bar = self.find_element(MainPageLocators.SEARCH_BAR)
+        search_bar.send_keys(name)
+
+        search_button = self.find_element(MainPageLocators.SEARCH_BUTTON)
+        search_button.click()
