@@ -62,8 +62,7 @@ class ProductPage(BasePage):
             raise AssertionError("Success message is still displayed")
 
     @allure.step("Кликаем на кнопку 'Добавить в корзину' без выполнения других действий")
-    def click_add_to_cart_without_action(self) -> None:
-        self.add_to_cart()
+    def should_be_error_message(self) -> None:
         assert self.element_is_present(
             ProductPageLocators.ERROR_MESSAGE), "A error message should have appeared, but it didn't"
 
@@ -110,8 +109,6 @@ class ProductPage(BasePage):
 
     @allure.step("Выполняем действия для продукта 'Компьютер'")
     def action_for_pc(self) -> None:
-        self.click_add_to_cart_without_action()
-        self.browser.refresh()
         self.select_random_option(ProductPageLocators.SELECT_LIST)
         self.click_radio_buttons()
         self.click_checkboxes()
@@ -133,8 +130,6 @@ class ProductPage(BasePage):
 
     @allure.step("Выполняем действия для продукта 'Подарочная карта'")
     def action_for_gift(self) -> None:
-        self.click_add_to_cart_without_action()
-        self.browser.refresh()
         self.fill_gift_form_and_add_to_cart()
         self.should_be_success_message()
         self.success_message_is_disappeared()

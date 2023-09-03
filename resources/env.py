@@ -3,6 +3,8 @@ class Resources:
     MAIN_LINK = "https://demo.nopcommerce.com/"
     REGISTER_LINK = "https://demo.nopcommerce.com/register?returnUrl=%2F"
     CART_LINK = "https://demo.nopcommerce.com/cart"
+    PC_LINK = "https://demo.nopcommerce.com/build-your-own-computer"
+    GIFT_LINK = "https://demo.nopcommerce.com/25-virtual-gift-card"
 
     PC_PAGE_NAME = "Build your own computer"
     MACBOOK_PAGE_NAME = "Apple MacBook Pro 13-inch"

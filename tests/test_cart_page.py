@@ -74,3 +74,19 @@ def test_user_can_go_to_shopping_cart(browser):
     main_page.go_to_shopping_cart()
     cart_page = CartPage(browser, browser.current_url)
     cart_page.cart_should_be_empty()
+
+
+@allure.step("Тест: Проверка появления ошибки с сообщением без заполнения форм на странице с компьютером")
+def test_add_computer_to_the_cart_without_filling_the_fields(browser):
+    pc_page = ProductPage(browser, Resources.PC_LINK)
+    pc_page.open()
+    pc_page.add_to_cart()
+    pc_page.should_be_error_message()
+
+
+@allure.step("Тест: Проверка появления ошибки с сообщением без заполнения форм на странице с подарочной картой")
+def test_add_gift_to_the_cart_without_filling_the_fields(browser):
+    pc_page = ProductPage(browser, Resources.GIFT_LINK)
+    pc_page.open()
+    pc_page.add_to_cart()
+    pc_page.should_be_error_message()
