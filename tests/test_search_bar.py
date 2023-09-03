@@ -14,7 +14,6 @@ def test_search_for_an_existing_product(browser):
     search_page = SearchPage(browser, browser.current_url)
     search_page.should_be_search_results()
     search_page.result_should_contain_information_about_the_products()
-    # search_page.products_should_have_name_price_and_image()
     search_page.search_results_should_be_unique()
 
 
