@@ -6,6 +6,15 @@ from pages.base_page import BasePage
 
 
 class RegisterPage(BasePage):
+    @allure.step("")
+    def click_register_button(self) -> None:
+        reg_button = self.find_element(RegisterPageLocators.REGISTER_BUTTON)
+        reg_button.click()
+
+    def should_be_error_message_about_required_fields(self):
+        assert self.element_is_present(
+            RegisterPageLocators.ERROR_MESSAGE), "Should be an error message about required fields , but it shouldn't"
+
     @staticmethod
     @allure.step("Создаем случайные данные для регистрации пользователя")
     def generate_random_user() -> tuple:
@@ -32,13 +41,12 @@ class RegisterPage(BasePage):
         passwords = self.find_elements(RegisterPageLocators.PASSWORD)
         for parole in passwords:
             parole.send_keys(password)
-        register_button = self.find_element(RegisterPageLocators.REGISTER_BUTTON)
-        register_button.click()
+        self.click_register_button()
 
     @allure.step("Проверка успешной регистрации")
     def should_be_success_registration(self) -> None:
         assert self.element_is_present(
-            RegisterPageLocators.SUCCESS_REGISTRATION), "There should be a message about successful registration, but this does not happen "
+            RegisterPageLocators.SUCCESS_REGISTRATION), "Should be a message about successful registration, but this does not happen "
 
     @allure.step("Проверяем, что на странице есть ссылка для перехода на страницу входа")
     def should_be_login_link(self) -> None:

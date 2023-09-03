@@ -6,7 +6,7 @@ from pages.register_page import RegisterPage
 from resources.env import Resources
 
 
-@allure.step("Тест: Регистрация и Вход в аккаунт")
+@allure.step("Тест: Проверка регистрации и входа в аккаунт")
 def test_register_and_login_new_user(browser):
     main_page = MainPage(browser, Resources.MAIN_LINK)
     main_page.open()
@@ -25,3 +25,14 @@ def test_register_and_login_new_user(browser):
     login_page.login_new_user(email, password)
 
     main_page.should_be_authorized_user()
+
+
+@allure.step("Тест: Проверка ответа страницы регистрации без заполнения полей формы")
+def test_click_on_the_button_without_filling_the_form(browser):
+    main_page = MainPage(browser, Resources.MAIN_LINK)
+    main_page.open()
+    main_page.should_be_register_link()
+    main_page.go_to_register_page()
+    register_page = RegisterPage(browser, Resources.REGISTER_LINK)
+    register_page.click_register_button()
+    register_page.should_be_error_message_about_required_fields()

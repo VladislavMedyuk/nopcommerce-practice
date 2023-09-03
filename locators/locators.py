@@ -53,6 +53,7 @@ class RegisterPageLocators:
     PASSWORD = (By.CSS_SELECTOR, "[type = 'Password']")
     SUCCESS_REGISTRATION = (By.CSS_SELECTOR, ".page-body .result")
     LOGIN_LINK = (By.CLASS_NAME, "ico-login")
+    ERROR_MESSAGE = (By.CSS_SELECTOR, ".field-validation-error span")
 
 
 class LoginPageLocators:
